@@ -1,4 +1,4 @@
-require_relative "chess_piece.rb"
+require_relative "pieces.rb"
 
 class Board
   attr_reader :grid
@@ -11,7 +11,7 @@ class Board
   def populate
     @grid.each_with_index do |row, row_idx|
       if row_idx <= 1 || row_idx >= 6
-        row.map! { |el| Piece.new }
+        row.map! { |el| Piece.new } # create new method that will return the exact pieces
       else
         row.map! { |el| nil }
       end
