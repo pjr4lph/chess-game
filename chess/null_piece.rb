@@ -2,7 +2,7 @@ require "singleton"
 class NullPiece < Piece
   include Singleton
   def initialize
-    @color = "grey"
+    @color = nil
     @symbol = '  '
   end
 end

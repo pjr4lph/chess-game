@@ -27,14 +27,20 @@ module SlidingPiece
     possible_moves = []
     move_dirs.each do |move|
       new_move = @current_pos
-      until new_move.any? {|piece_idx| piece_idx > (@board.size - 1) || piece_idx < 0} #add hitting a piece
+      until new_move.any? {|piece_idx| piece_idx > (@board.grid.size - 1) || piece_idx < 0} #add hitting a piece
+        # debugger
         temp_move = []
         new_move.each_with_index do |el, idx|
           temp_move[idx] = el + move[idx]
         end
-        possible_moves << temp_move unless temp_move.any? {|piece_idx| piece_idx > (@board.size - 1) || piece_idx < 0}
-        new_move = temp_move
-        break unless @board[new_move].class == NullPiece
+        unless temp_move.any? {|piece_idx| piece_idx > (@board.grid.size - 1) || piece_idx < 0}
+          possible_moves << temp_move
+          new_move = temp_move
+          break unless @board[new_move].class == NullPiece
+          # debugger
+        else
+          break
+        end
       end
     end
     move_check(possible_moves)

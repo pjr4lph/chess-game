@@ -1,4 +1,11 @@
 class Pawn < Piece
+
+  attr_reader :symbol
+
+  def initialize(board, starting_pos, color)
+    @symbol = "P "
+  end
+
   @@black_first_directions = [
     [2, 0]
   ]
@@ -27,7 +34,7 @@ class Pawn < Piece
   def kill_check
     kill_pos_array = []
 
-    if self.color == "black"
+    if self.color == :black
       kill_temp = []
       kill_temp << (@current_pos[0] + @@black_kill_directions[0][0])
       kill_temp << (@current_pos[1] + @@black_kill_directions[0][1])
@@ -63,7 +70,7 @@ class Pawn < Piece
     # check if there is a piece of different color at kill positions
     # return all possible directions
     # check color of self
-    if self.color == "black"
+    if self.color == :black
       if @current_pos[0] == 1
         kill_check + @@black_first_directions + @@black_directions
       elsif @current_pos[0] == 7
@@ -92,7 +99,7 @@ class Pawn < Piece
       possible_moves << temp_move
     end
 
-    new_possible_moves = possible_moves.reject { |move| move.any? {|move_idx| move_idx < 0 || move_idx >= @board.size}}
+    new_possible_moves = possible_moves.reject { |move| move.any? {|move_idx| move_idx < 0 || move_idx >= @board.grid.size}}
     move_check(new_possible_moves)
   end
 

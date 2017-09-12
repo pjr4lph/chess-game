@@ -38,7 +38,7 @@ module SteppingPiece
       possible_moves << temp_move
     end
 
-    new_possible_moves = possible_moves.reject { |move| move.any? {|move_idx| move_idx < 0 || move_idx >= @board.size}}
+    new_possible_moves = possible_moves.reject { |move| move.any? {|move_idx| move_idx < 0 || move_idx >= @board.grid.size}}
     move_check(new_possible_moves)
   end
 

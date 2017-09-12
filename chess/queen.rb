@@ -1,9 +1,13 @@
 
 class Queen < Piece
 include SlidingPiece
-  def initialize(board, starting_pos)
+
+attr_reader :symbol
+
+  def initialize(board, starting_pos, color)
     @diagonal = true
     @hor_vert = true
+    @symbol = "Q "
     super
   end
 end

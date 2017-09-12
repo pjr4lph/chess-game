@@ -22,6 +22,6 @@ require_relative "pieces.rb"
 
 
 #
-b = Array.new(8) { Array.new(8) }
-c = Pawn.new(b, [0, 0], "black")
-print c.moves
+# b = Array.new(8) { Array.new(8) }
+# c = Pawn.new(b, [0, 0], "black")
+# print c.moves

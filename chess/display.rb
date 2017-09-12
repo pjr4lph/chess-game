@@ -20,10 +20,10 @@ class Display
         end
         background = :light_cyan if @cursor.cursor_pos == [i,j]
         pos = [i, j]
-        if @board[pos].nil?
+        if @board[pos].class == NullPiece
           print "  ".colorize(background: background)
         else
-          print "--".colorize(color: :yellow, background: background)
+          print @board[pos].symbol.colorize(color: :chartreuse, background: background)
         end
         puts "" if j == 7
       end
@@ -41,4 +41,3 @@ end
 a = Board.new
 d = Display.new(a)
 d.play
-# puts String.colors

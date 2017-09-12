@@ -1,8 +1,12 @@
 class Rook < Piece
 include SlidingPiece
-  def initialize(board, starting_pos)
+
+attr_reader :symbol
+
+  def initialize(board, starting_pos, color)
     @hor_vert = true
     @diagonal = false
+    @symbol = "R "
     super
   end
 
